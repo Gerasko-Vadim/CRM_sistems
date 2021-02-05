@@ -1,0 +1,27 @@
+.blockDishes {
+  width: 100%;
+  height: auto;
+  padding: 27px 15px;
+  background: #FFFFFF;
+
+}
+.dishes {
+  width: 100%;
+  height: 32px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+.dishes div {
+    width: auto;
+    height: 100%;
+    display:  inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px 15px;
+    background: #eceff2;
+    border-radius: 10px;
+    white-space:nowrap;
+}

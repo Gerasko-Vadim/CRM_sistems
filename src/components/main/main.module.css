@@ -1,0 +1,26 @@
+.main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.blockDeshes{
+    width: 100%;
+    height: auto;
+    margin-top: 280px;
+    padding-bottom: 20px;
+}
+.blockTitle{
+    width: 100%;
+    height: auto;
+    padding: 0px 15px;
+    margin-top: 30px;
+margin-bottom: 5px;
+}
+.title{
+    font-style: normal;
+font-weight: bold;
+font-size: 24px;
+line-height: 29px;
+color: #000000;
+}
