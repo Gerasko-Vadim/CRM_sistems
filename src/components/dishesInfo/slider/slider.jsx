@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   MDBCarousel,
@@ -6,12 +7,11 @@ import {
   MDBView,
   MDBContainer,
 } from "mdbreact";
-import "./carusel.scss";
-import back from "./img/back.png";
-import search from "./img/search.png";
-import { Link } from "react-router-dom";
+import "./slider.scss";
+import clas from "./slider.module.css"
 
-const CarouselPage = () => {
+
+const Slider = () => {
   return (
     <div className="corusel-wrapper">
       <MDBContainer>
@@ -53,15 +53,7 @@ const CarouselPage = () => {
           </MDBCarouselInner>
         </MDBCarousel>
       </MDBContainer>
-      <div className="topBlock">
-        <Link to="/">
-          <img alt="back" src={back} />
-        </Link>
-        <Link to="/">
-          <img alt="search" src={search} />
-        </Link>
-      </div>
     </div>
   );
 };
-export default CarouselPage;
+export default Slider;
