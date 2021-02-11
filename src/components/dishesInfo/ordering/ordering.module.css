@@ -12,6 +12,7 @@
   padding: 20px 15px;
   display: flex;
   flex-direction: column;
+  border-bottom: 2px solid #898a8d;
 }
 .about {
   font-style: normal;

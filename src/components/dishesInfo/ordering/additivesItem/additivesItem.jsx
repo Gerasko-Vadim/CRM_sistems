@@ -1,14 +1,15 @@
-import React from 'react';
-import clas from "./additives.module.css"
+import React from "react";
+import clas from "./additives.module.css";
+import "./style.scss";
 
-
-
-export default function AdditivesList() {
+export default function AdditivesList({text,price,id}) {
   return (
-  <div className={clas.addItem}>
-      <input type="checkbox" className={clas.checked}/>
-      <span className={clas.text}>Дополнительно Сыр</span>
-      <span className={clas.price}>+20 сом</span>
-  </div>
+    <div className="checkbox">
+      <input type="checkbox" id={id} className="checked1" />
+      <label for={id}>
+        <span className="text">{text}</span>
+        <span className="price">+{price} сом</span>
+      </label>
+    </div>
   );
 }

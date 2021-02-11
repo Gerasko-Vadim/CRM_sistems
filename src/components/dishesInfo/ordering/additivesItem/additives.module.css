@@ -1,9 +1,33 @@
 .checked {
   width: 30px;
   height: 30px;
+  content: "./img/none.png";
   box-sizing: border-box;
   background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+}
+.addItem input[type="checkbox"]:checked ~ label::before {
+  color: #7bbe72;
+}
+
+.addItem input[type="checkbox"]:checked ~ label::after {
+  -webkit-transform: rotate(-45deg) scale(1);
+  transform: rotate(-45deg) scale(1);
+}
+.addItem label:after {
+  content: '';
+    display: block;
+    width: 10px;
+    height: 5px;
+    border-bottom: 2px solid #7bbe72;
+    border-left: 2px solid #7bbe72;
+    -webkit-transform: rotate(-45deg) scale(0);
+    transform: rotate(-45deg) scale(0);
+    transition: transform ease 0.25s;
+    will-change: transform;
+    position: absolute;
+    top: 12px;
+    left: 10px;
 }
 .addItem {
   width: 100%;

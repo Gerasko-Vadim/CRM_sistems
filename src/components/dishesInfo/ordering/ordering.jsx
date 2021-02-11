@@ -17,16 +17,19 @@ const Ordering = ()=>{
             Добавки
             </span>
             <div className={clas.additivesBlock}>
-                <AdditivesList/>
+                <AdditivesList text="Дополнительно Сыр" price="20" id="1"/>
             </div>
             
         </div>
         <BlockOrdered/>
         <div className={clas.list}>
-        <AdditivesList/>
-        <AdditivesList/>
-        <AdditivesList/>
-        <AdditivesList/>
+        <span className={clas.additivesText}>
+            Особые пожелания 
+            </span>
+        <AdditivesList text="Дополнительно Сыр" price="20" id="2"/>
+        <AdditivesList text="Дополнительно Сыр" price="20" id="3"/>
+        <AdditivesList text="Дополнительно Сыр" price="20" id="4"/>
+        <AdditivesList text="Дополнительно Сыр" price="20" id="5"/>
         </div>
         
         </>
