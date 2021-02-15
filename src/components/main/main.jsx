@@ -6,12 +6,16 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import CompanyBlock from "./companyBlock/companyBlock";
 import Dishes from "./dishes/dishes";
+import {useDispatch} from "react-redux"
 
 import CardsWrapper from "./cardsWrapper/cardsWrapper";
+import { mainGetCards } from "../../redux/actions/mainPage";
 
 const Main = () => {
+  const dispatch = useDispatch();
     useEffect(()=>{
         window.scrollTo(0, 0)
+        dispatch(mainGetCards())
     },[])
   return (
     <div>

@@ -2,7 +2,6 @@
   width: 100%;
   height: auto;
   padding: 27px 15px 0px 15px;
-
 }
 .dishes {
   width: 100%;
@@ -13,14 +12,28 @@
   flex-direction: row;
   margin-bottom: 5px;
 }
-.dishes div {
-    width: auto;
-    height: 32px;
-    display:  inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 5px 15px;
-    background: #eceff2;
-    border-radius: 10px;
-    white-space:nowrap;
+.activeBtn {
+  background: #eceff2;
+  width: auto;
+  height: 32px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: 2s;
 }
+.noActive{
+  width: auto;
+  height: 32px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px 15px;
+  background: #ffff;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: 2s;
+}
+

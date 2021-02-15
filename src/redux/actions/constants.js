@@ -1,0 +1,1 @@
+export const MAIN_DATA = 'MAIN_DATA';

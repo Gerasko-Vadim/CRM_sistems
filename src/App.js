@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import HelloPage from "./components/helloPage/helloPage";
 import Main from "./components/main/main";
 import DishesInfo from "./components/dishesInfo/dishesInfo";
+import Basket from "./components/basket/basket";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route  exact path="/" component={HelloPage}/>
         <Route path="/main" component={Main}/>
         <Route path="/dishes-info" component={DishesInfo}/>
+        <Route path="/basket" component={Basket}/>
       </Switch>
     </div>
   );
