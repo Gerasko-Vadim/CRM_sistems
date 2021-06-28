@@ -2,13 +2,17 @@ import React from "react"
 import CardDishes from "../dishes/cards/cards";
 import clas from "./cardsWrapper.module.css"
 
-const CardsWrapper = ()=>{
-    return(
+const CardsWrapper = ({ data }) => {
+    return (
         <div className={clas.wrapper}>
-            <CardDishes/>
-            <CardDishes/>
-            <CardDishes/>
-            <CardDishes/>
+            {
+                data && data.map((item) => {
+                    return (
+                        <CardDishes key={item.id} data={item} />
+                    )
+                })
+            }
+
         </div>
 
     )

@@ -6,17 +6,19 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import CompanyBlock from "./companyBlock/companyBlock";
 import Dishes from "./dishes/dishes";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import CardsWrapper from "./cardsWrapper/cardsWrapper";
-import { mainGetCards } from "../../redux/actions/mainPage";
+import { getAllCategory, getTopProducts } from "../../redux/actions/mainPage";
 import { Link } from "react-router-dom";
 
 const Main = () => {
   const dispatch = useDispatch();
+  const data = useSelector((state) => state.MainData.products)
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(mainGetCards());
+    dispatch(getAllCategory());
+    dispatch(getTopProducts())
   }, []);
   return (
     <div className={clas.main}>
@@ -24,7 +26,7 @@ const Main = () => {
       <CompanyBlock />
       <div className={clas.blockDeshes}>
         <Dishes />
-        <CardsWrapper />
+        <CardsWrapper data={data && data} />
         <div className={clas.blockTitle}>
           <span className={clas.title}>Бургеры</span>
         </div>
