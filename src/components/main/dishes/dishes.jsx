@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import clas from "./dishes.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductsByCategoryActions } from "../../../redux/actions/mainPage";
+import { getProductsByCategoryActions, getTopProductsActions } from "../../../redux/actions/mainPage";
 
 const Dishes = () => {
   const data = useSelector((state) => state.MainData.arrayData);
@@ -12,12 +12,18 @@ const Dishes = () => {
   const getProductsByCategory = (id) => {
     dispatch(getProductsByCategoryActions(id))
   }
+  const getTopProducts =()=>{
+    dispatch(getTopProductsActions())
+  }
   return (
     <div className={clas.blockDishes}>
       <div className={clas.dishes}>
         <div
           className={active == 0 ? clas.activeBtn : clas.noActive}
-          onClick={() => setActive(0)}
+          onClick={() =>{
+            setActive(0)
+            getTopProducts()
+          } }
         >
           Популярные блюда
         </div>

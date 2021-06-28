@@ -9,7 +9,7 @@ import Dishes from "./dishes/dishes";
 import { useDispatch, useSelector } from "react-redux";
 
 import CardsWrapper from "./cardsWrapper/cardsWrapper";
-import { getAllCategory, getTopProducts } from "../../redux/actions/mainPage";
+import { getAllCategory, getTopProductsActions } from "../../redux/actions/mainPage";
 import { Link } from "react-router-dom";
 
 const Main = () => {
@@ -18,7 +18,7 @@ const Main = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getAllCategory());
-    dispatch(getTopProducts())
+    dispatch(getTopProductsActions())
   }, []);
   return (
     <div className={clas.main}>

@@ -19,7 +19,7 @@ export function getAllCategory() {
   };
 }
 
-export const getTopProducts = ()=>{
+export const getTopProductsActions = ()=>{
   return async dispatch => {
     await API.getTopProduct()
     .then(res=> dispatch(seccess(res.data)))
