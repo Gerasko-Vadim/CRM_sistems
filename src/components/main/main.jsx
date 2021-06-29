@@ -31,7 +31,7 @@ const Main = () => {
           <span className={clas.title}>Бургеры</span>
         </div>
 
-        <CardsWrapper />
+       
       </div>
       <div className={clas.blockBasket}>
         <Link className={clas.link} to="/basket">

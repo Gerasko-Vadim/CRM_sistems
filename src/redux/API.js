@@ -16,6 +16,7 @@ const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjc5NDVhZmIyODliM
   export default {
       getAllCategory:()=>http.get("/api/categories"),
       getTopProduct: () => http.get(`/api/categories/top`),
-      getProductsByCategory:(id)=>http.get(`/api/categories/${id}`)
+      getProductsByCategory:(id)=>http.get(`/api/categories/${id}`),
+      getProductById: (id)=> http.get(`/api/products/${id}`)
     
   }
