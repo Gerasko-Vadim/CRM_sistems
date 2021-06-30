@@ -9,39 +9,31 @@ import {
 } from "mdbreact";
 import "./slider.scss";
 import clas from "./slider.module.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Carousel } from 'react-bootstrap';
 
 
 const Slider = ({ images }) => {
   return (
     <div className="corusel-wrapper">
-      <MDBContainer>
-        <MDBCarousel
-          activeItem={0}
-          length={images && images.length}
-          showControls={false}
-          showIndicators={true}
-          multiItem={images && images.length > 1 ? true : false}
-          className="z-depth-1"
-        >
-          <MDBCarouselInner>
-            {
-              images && images.map((item, index) => {
-                return (
-                  <MDBCarouselItem itemId={index}>
-                    <MDBView>
-                      <img
-                        className="d-block w-100"
-                        src={item}
-                        alt="First slide"
-                      />
-                    </MDBView>
-                  </MDBCarouselItem>
-                )
-              })
-            }
-          </MDBCarouselInner>
-        </MDBCarousel>
-      </MDBContainer>
+      <Carousel>
+        {
+          images && images.map((item, index) => {
+            return (
+              <Carousel.Item interval={1000}>
+                <img
+                  className="d-block w-100"
+                  src={item}
+                  alt="First slide"
+                />
+
+              </Carousel.Item>
+            )
+          })
+        }
+
+        
+      </Carousel>
     </div>
   );
 };

@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
     "cra-template": "1.1.2",
     "mdbreact": "^5.0.2",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.1",
     "react-magic-slider-dots": "^1.2.2",
     "react-redux": "^7.2.2",
