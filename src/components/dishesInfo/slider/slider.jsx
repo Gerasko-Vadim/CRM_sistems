@@ -20,7 +20,7 @@ const Slider = ({ images }) => {
         {
           images && images.map((item, index) => {
             return (
-              <Carousel.Item interval={1000}>
+              <Carousel.Item interval={1000} key={index}>
                 <img
                   className="d-block w-100"
                   src={item}

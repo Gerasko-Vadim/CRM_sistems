@@ -12,7 +12,7 @@
   padding: 20px 15px;
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid #898a8d;
+
 }
 .about {
   font-style: normal;
@@ -39,5 +39,6 @@
     width: 100%;
     height: auto;
     background: #F2F2F2;
+    border-top: 2px solid #898a8d;
 
 }

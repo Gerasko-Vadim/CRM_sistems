@@ -2,14 +2,31 @@ import React, { useEffect, useLayoutEffect, useState } from "react"
 import AdditivesList from "./additivesItem/additivesItem";
 import BlockOrdered from "./blockOrdered/blockOrdered";
 import clas from "./ordering.module.css"
+import ModificatorGroup from "./modificator_group/modificator_group"
 
-const Ordering = ({data}) => {
+const Ordering = ({ data }) => {
     const [arrModifiers, setArrModifiers] = useState([])
-    useEffect(()=>{
-        setArrModifiers(data && data.modifier_groups && data.modifier_groups[0] &&  data.modifier_groups[0].modifiers)
-    },[data])
-    console.log(data)
-    console.log(arrModifiers)
+    const [modifiers, setModifiers] = useState([])
+    useEffect(() => {
+        setArrModifiers(data && data.modifiers)
+    }, [data])
+    const changeChecked = (id, groupId) => {
+        console.log(id, groupId)
+        const item = modifiers.find((el) => el.modifierId === id)
+        console.log(item)
+        if (item) {
+            const newArr = modifiers.filter((item) => item.modifierId !== id)
+            setModifiers(newArr)
+        }
+        else {
+            setModifiers((prevState) => {
+                return [...prevState, { modifierId: id, groupId }]
+            })
+        }
+
+
+    }
+    console.log("modif", modifiers)
     return (
         <>
             <div className={clas.ordering}>
@@ -17,36 +34,35 @@ const Ordering = ({data}) => {
                     {data.name}
                 </span>
                 <span className={clas.about}>
-                    
+
                 </span>
                 <span className={clas.additivesText}>
-                    Добавки
+                    {arrModifiers && arrModifiers.length !== 0 ? "Добавки" : null}
                 </span>
                 <div className={clas.additivesBlock}>
                     {
-                      arrModifiers && arrModifiers.map((item,index)=>{
-                    
-                                return(
-                                    <AdditivesList key={item.id} text={item.name} price="20" id={index} />
-                                )
-                           
+                        arrModifiers && arrModifiers.map((item, index) => {
+
+                            return (
+                                <AdditivesList 
+                                changeChecked={changeChecked}
+                                 groupId={item.groupId}
+                                  key={item.id} 
+                                  text={item.name} 
+                                  price="20"
+                                   id={item.id} 
+                                   modifiers={modifiers}/>
+                            )
+
                         })
                     }
-                   
+
                 </div>
 
             </div>
             <BlockOrdered />
-            <div className={clas.list}>
-                <span className={clas.additivesText}>
-                    Особые пожелания
-                </span>
-                <AdditivesList text="Дополнительно Сыр" price="20" id="2" />
-                <AdditivesList text="Дополнительно Сыр" price="20" id="3" />
-                <AdditivesList text="Дополнительно Сыр" price="20" id="4" />
-                <AdditivesList text="Дополнительно Сыр" price="20" id="5" />
-            </div>
 
+            <ModificatorGroup   modifiers={modifiers} changeChecked={changeChecked} items={data.modifier_groups} />
         </>
     )
 }
