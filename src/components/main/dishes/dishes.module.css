@@ -1,0 +1,39 @@
+.blockDishes {
+  width: 100%;
+  height: auto;
+  padding: 27px 15px 0px 15px;
+}
+.dishes {
+  width: 100%;
+  height: 50px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+.activeBtn {
+  background: #eceff2;
+  width: auto;
+  height: 32px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: 1s;
+}
+.noActive{
+  width: auto;
+  height: 32px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px 15px;
+  background: #ffff;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: 1s;
+}
+

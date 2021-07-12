@@ -1,0 +1,31 @@
+.hello-slider{
+    width: 100%;
+    height: auto;
+    a{
+        outline:none;
+      }
+      .slick-track {
+      
+        display: flex !important;
+      }
+    //   .slick-next::before {
+    //     content:  url(../img/Vector\(1\).png) !important;
+       
+    //   }
+    //   .slick-prev::before {
+    //     content:  url(../img/Vector\(2\).png) !important;
+       
+    //   }
+    .magic-dots.slick-dots li.slick-active button:before {
+        color:#FC001C !important;
+    }
+    .magic-dots.slick-dots li.small button:before {
+        color: rgba(252, 0, 28, 0.5) !important;
+    }
+    .slick-initialized .slick-slide {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+}

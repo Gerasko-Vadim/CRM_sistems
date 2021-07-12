@@ -1,0 +1,30 @@
+
+.main-slider{
+    width: 100%;
+    height: auto;
+    margin-top: 25px;
+    a{
+        outline:none;
+      }
+      .slick-track {
+      
+        display: flex !important;
+      }
+    //   .slick-next::before {
+    //     content:  url(../img/Vector\(1\).png) !important;
+       
+    //   }
+    //   .slick-prev::before {
+    //     content:  url(../img/Vector\(2\).png) !important;
+       
+    //   }
+
+    .slick-initialized .slick-slide {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .slick-slide, .slick-active, .slick-current{
+    }
+
+}

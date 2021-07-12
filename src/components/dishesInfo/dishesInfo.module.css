@@ -1,0 +1,28 @@
+.similar {
+  width: 100%;
+  height: auto;
+  background: #f2f2f2;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 20px;
+  padding-bottom: 150px;
+}
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #000000;
+}
+.similarsBlock{
+    width: 100%;
+    height: auto;
+    overflow:auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.similarsBlock a{
+    margin-right: 15px;
+    min-width: 48%;
+}
