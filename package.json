@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@coreui/react": "^4.0.0-beta.2",
+    "antd": "^4.16.6",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "coreui": "^0.4.2-alpha2",
     "cra-template": "1.1.2",
     "mdbreact": "^5.0.2",
     "node-sass": "^5.0.0",
