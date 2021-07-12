@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import clas from "./blockOrdered.module.css";
 
-const BlockOrdered = () => {
-  const [number, setNumber] = useState(1);
+const BlockOrdered = ({data, addAmount}) => {
+  const [number, setNumber] = useState(0);
+
+  useEffect(() =>{
+    console.log('ww',data);
+  });
+
+
   const increment = () => {
     if (number > 1) setNumber(number - 1);
   };
   const decrement = () => {
     setNumber(number + 1);
   };
+
+
   return (
     <div className={clas.blockOrdered}>
       <div className={clas.blockTitle}>
@@ -24,7 +32,7 @@ const BlockOrdered = () => {
           <span>{number}</span>
           <button onClick={decrement}>+</button>
         </div>
-        <button className={clas.addBtn}>Добавить</button>
+        <button className={clas.addBtn} onClick={() => addAmount(number)}>Добавить</button>
       </div>
     </div>
   );

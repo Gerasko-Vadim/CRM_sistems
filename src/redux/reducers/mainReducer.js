@@ -16,7 +16,7 @@ const initialState = {
         return{
           ...state,
           products:[...action.payload]
-        }
+        };
       default:
         return state;
     }

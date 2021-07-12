@@ -13,10 +13,9 @@ export default function AdditivesList({
   disabled
 }) {
   const isChecked = useMemo(() => {
-    const isItem = modifiers.find((item) => item.modifierId === id)
+    const isItem = modifiers.find((item) => item.modifierId === id);
     return isItem ? true : false
-  }, [modifiers])
-  console.log(disabled)
+  }, [modifiers]);
   return (
     <>
       {

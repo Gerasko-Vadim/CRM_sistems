@@ -1,4 +1,3 @@
-
 import React, { useState } from "react"
 import clas from "../ordering.module.css"
 import AdditivesList from "../additivesItem/additivesItem";
@@ -10,14 +9,14 @@ import AdditivesList from "../additivesItem/additivesItem";
 // min_amount: 1
 const ModificatorGroup = ({ items, changeChecked, modifiers }) => {
     const [active, setActive] = useState(false);
-    const [mod, setMod] = useState([])
+    const [mod, setMod] = useState([]);
 
 
     const checkProps = (id, groupId) => {
         const min = items[0].props.min_amount;
         const max = items[0].props.max_amount;
         if (mod.includes(id)) {
-            const newArr = mod.filter((item) => item !== id)
+            const newArr = mod.filter((item) => item !== id);
             setMod([...newArr])
         }
         else {
@@ -25,18 +24,10 @@ const ModificatorGroup = ({ items, changeChecked, modifiers }) => {
         }
         if (mod.length >= min && mod.length <= max) {
             setActive(false)
-
         }
         else{
             setActive(true)
         }
-
-
-
-
-        console.log(mod);
-        console.log(mod.find((item) => item === id));
-
     };
 
     return (
@@ -73,5 +64,5 @@ const ModificatorGroup = ({ items, changeChecked, modifiers }) => {
 
 
     )
-}
+};
 export default ModificatorGroup;

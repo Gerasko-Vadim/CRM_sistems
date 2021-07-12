@@ -5,27 +5,36 @@ import ModificatorGroup from "./modificator_group/modificator_group";
 import clas from "./ordering.module.css";
 
 const Ordering = ({ data }) => {
-    const [arrModifiers, setArrModifiers] = useState([])
-    const [modifiers, setModifiers] = useState([])
+    const [arrModifiers, setArrModifiers] = useState([]);
+    const [modifiers, setModifiers] = useState([]);
+
+
     useEffect(() => {
         setArrModifiers(data && data.modifiers)
-    }, [data])
+    }, [data]);
+
+
     const changeChecked = (id, groupId) => {
-        console.log('mura', id, groupId)
-        const item = modifiers.find((el) => el.modifierId === id)
-        console.log(item)
+        const item = modifiers.find((el) => el.modifierId === id);
         if (item) {
-            const newArr = modifiers.filter((item) => item.modifierId !== id)
+            const newArr = modifiers.filter((item) => item.modifierId !== id);
             setModifiers(newArr)
-        }
-        else {
+        } else {
             setModifiers((prevState) => {
                 return [...prevState, { modifierId: id, groupId }]
             })
         }
-    }
+    };
 
-    console.log("modif", modifiers)
+    const addAmount = (amount) =>{
+        // setModifiers((prevState) =>{
+        //     return [...prevState, prevState[0]['amount'] = amount]
+        // })
+        modifiers[0]['amount'] = amount;
+        console.log("modif", modifiers);
+    };
+
+
     return (
         <>
             <div className={clas.ordering}>
@@ -41,7 +50,6 @@ const Ordering = ({ data }) => {
                 <div className={clas.additivesBlock}>
                     {
                         arrModifiers && arrModifiers.map((item, index) => {
-                            console.log('mura', item);
                             return (
                                 <AdditivesList
                                     changeChecked={changeChecked}
@@ -59,12 +67,12 @@ const Ordering = ({ data }) => {
                 </div>
 
             </div>
-            <BlockOrdered />
+            <BlockOrdered data={data} addAmount={addAmount}/>
 
             <ModificatorGroup modifiers={modifiers} changeChecked={changeChecked} items={data.modifier_groups} />
         </>
     )
-}
+};
 // modifier_groups: Array(1)
 // 0:
 // created_at: "2021-05-17T10:41:41.000000Z"

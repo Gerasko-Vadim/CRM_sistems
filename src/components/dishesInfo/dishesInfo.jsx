@@ -11,12 +11,10 @@ const DishesInfo = () => {
   const dispatch = useDispatch();
   const {pathname} = useLocation();
   const product = useSelector((state)=> state.ProductInfo.product);
-  console.log(pathname.split("/").pop());
   useEffect(()=>{
     window.scrollTo(0,0);
     dispatch(getDataProductById(pathname.split("/").pop()))
   },[]);
-    console.log(product);
 
     return (
     <>
