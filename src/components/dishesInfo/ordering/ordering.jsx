@@ -30,7 +30,7 @@ const Ordering = ({ data }) => {
         // setModifiers((prevState) =>{
         //     return [...prevState, prevState[0]['amount'] = amount]
         // })
-        modifiers[0]['amount'] = amount;
+        modifiers[0]['amount'] = amount; //походу за хардкодил?
         console.log("modif", modifiers);
     };
 

@@ -1,13 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import clas from "./blockOrdered.module.css";
 
-const BlockOrdered = ({data, addAmount}) => {
+const BlockOrdered = ({addAmount}) => {
   const [number, setNumber] = useState(0);
-
-  useEffect(() =>{
-    console.log('ww',data);
-  });
-
 
   const increment = () => {
     if (number > 1) setNumber(number - 1);
