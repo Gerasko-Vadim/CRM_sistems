@@ -1,5 +1,5 @@
 import Axios from "axios";
-const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjc5NDVhZmIyODliMGQzMTI1MGU4MSIsImV4cCI6MTY0NDc0MjcyMSwiaWF0IjoxNjEzMjA2NzIxfQ.8G9FpLvAjyW-85xxr_lanqW2eyK6Fp9voGkETkGqDsQ"
+const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjc5NDVhZmIyODliMGQzMTI1MGU4MSIsImV4cCI6MTY0NDc0MjcyMSwiaWF0IjoxNjEzMjA2NzIxfQ.8G9FpLvAjyW-85xxr_lanqW2eyK6Fp9voGkETkGqDsQ";
 
  let http = Axios.create({
     baseURL: "https://qrmenu.artwaga.com",

@@ -7,6 +7,6 @@ export const getDataProductById = (id) => {
         await API.getProductById(id)
             .then(res => dispatch(seccess(res.data)))
             .catch(err => console.log(err))
-    }
+    };
     function seccess(json) { return { type: GET_PRODUCT_BY_ID, payload: json } }
-}
+};

@@ -8,15 +8,17 @@ import Ordering from "./ordering/ordering";
 import Slider from "./slider/slider";
 
 const DishesInfo = () => {
-  const dispatch = useDispatch()
-  const {pathname} = useLocation()
-  const product = useSelector((state)=> state.ProductInfo.product)
-  console.log(pathname.split("/").pop())
+  const dispatch = useDispatch();
+  const {pathname} = useLocation();
+  const product = useSelector((state)=> state.ProductInfo.product);
+  console.log(pathname.split("/").pop());
   useEffect(()=>{
-    window.scrollTo(0,0)
+    window.scrollTo(0,0);
     dispatch(getDataProductById(pathname.split("/").pop()))
-  },[])
-  return (
+  },[]);
+    console.log(product);
+
+    return (
     <>
       <Slider images={product && product.imageLinks} />
       <Ordering data={product && product} />
