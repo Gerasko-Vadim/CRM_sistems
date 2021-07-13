@@ -3,14 +3,17 @@ import AdditivesList from "./additivesItem/additivesItem";
 import BlockOrdered from "./blockOrdered/blockOrdered";
 import ModificatorGroup from "./modificator_group/modificator_group";
 import clas from "./ordering.module.css";
+import SizepriceGroup from "./sizeprice_group/sizeprice_group";
 
 const Ordering = ({ data }) => {
     const [arrModifiers, setArrModifiers] = useState([]);
     const [modifiers, setModifiers] = useState([]);
+    const [sizeProduct, setSizeProduct] = useState([]);
 
 
     useEffect(() => {
-        setArrModifiers(data && data.modifiers)
+        setArrModifiers(data && data.modifiers);
+        setSizeProduct(data.sizeprice);
     }, [data]);
 
 
@@ -33,6 +36,7 @@ const Ordering = ({ data }) => {
         modifiers[0]['amount'] = amount; //походу за хардкодил?
         console.log("modif", modifiers);
     };
+
 
 
     return (
@@ -70,6 +74,7 @@ const Ordering = ({ data }) => {
             <BlockOrdered data={data} addAmount={addAmount}/>
 
             <ModificatorGroup modifiers={modifiers} changeChecked={changeChecked} items={data.modifier_groups} />
+            <SizepriceGroup items={data.sizeprice} changeChecked={changeChecked} modifiers={sizeProduct}/>
         </>
     )
 };
