@@ -17,10 +17,12 @@ const ModificatorGroup = ({ items, changeChecked, modifiers }) => {
         const max = items[0].props.max_amount;
         if (mod.includes(id)) {
             const newArr = mod.filter((item) => item !== id);
-            setMod([...newArr])
+            setMod([...newArr]);
+            changeChecked(id,groupId)
         }
         else {
             setMod((prevState)=>[...prevState, id])
+            changeChecked(id,groupId)
         }
         if (mod.length >= min && mod.length <= max) {
             setActive(false)

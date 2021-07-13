@@ -7,8 +7,10 @@ import SizepriceGroup from "./sizeprice_group/sizeprice_group";
 
 const Ordering = ({ data }) => {
     const [arrModifiers, setArrModifiers] = useState([]);
-    const [modifiers, setModifiers] = useState([]);
+    const [modifiers, setModifiers] = useState([])
     const [sizeProduct, setSizeProduct] = useState([]);
+    const [sizeId, setSizeId] = useState()
+    const [amount, setAmount] = useState()
 
 
     useEffect(() => {
@@ -24,20 +26,31 @@ const Ordering = ({ data }) => {
             setModifiers(newArr)
         } else {
             setModifiers((prevState) => {
-                return [...prevState, { modifierId: id, groupId }]
+                return [...prevState, { modifierId: id, groupId, amount: "1" }]
             })
         }
     };
 
-    const addAmount = (amount) =>{
-        // setModifiers((prevState) =>{
-        //     return [...prevState, prevState[0]['amount'] = amount]
-        // })
-        modifiers[0]['amount'] = amount; //походу за хардкодил?
-        console.log("modif", modifiers);
+    const addAmount = (amount) => {
+        setAmount(amount)
     };
 
+    console.log('size', sizeId)
 
+    const pushProductToBasket = () => {
+        const arrProduct = JSON.parse(localStorage.getItem('products')) || [];
+        console.log(arrProduct)
+        const product = {
+            "productId": data.id,
+            "amount": amount,
+            "name": data.name,
+            "sizeId": sizeId,
+            "comment": "\u041d\u0430\u0440\u0438\u0441\u0443\u0439\u0442\u0435 \u043a\u043e\u0442\u0438\u043a\u0430",
+            "modifiers": modifiers
+        }
+        arrProduct.push(product)
+        localStorage.setItem('products',JSON.stringify(arrProduct) )
+    }
 
     return (
         <>
@@ -71,10 +84,10 @@ const Ordering = ({ data }) => {
                 </div>
 
             </div>
-            <BlockOrdered data={data} addAmount={addAmount}/>
+            <BlockOrdered data={data} addAmount={addAmount} pushProductToBasket={pushProductToBasket} />
 
             <ModificatorGroup modifiers={modifiers} changeChecked={changeChecked} items={data.modifier_groups} />
-            <SizepriceGroup items={data.sizeprice} changeChecked={changeChecked} modifiers={sizeProduct}/>
+            <SizepriceGroup items={data.sizeprice} changeChecked={(id) => setSizeId(id)} modifiers={sizeProduct} />
         </>
     )
 };

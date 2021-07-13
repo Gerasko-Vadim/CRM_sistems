@@ -69,3 +69,8 @@
 
   color: #ffffff;
 }
+.item{
+  background: red;
+  width: 100%;
+  height: 58px;
+}

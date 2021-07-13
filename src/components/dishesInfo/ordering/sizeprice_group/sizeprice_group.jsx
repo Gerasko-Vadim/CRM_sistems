@@ -19,6 +19,7 @@ const SizepriceGroup = ({items, changeChecked, modifiers }) => {
         }
         else {
             setMod((prevState)=>[...prevState, id])
+            changeChecked(id)
         }
         if (mod.length >= 1 && mod.length <= 1) {
             setActive(false)
@@ -33,35 +34,40 @@ const SizepriceGroup = ({items, changeChecked, modifiers }) => {
         <>
             {
                 items && items.map((item) => {
-                    console.log(item);
-                    return (
-                        <div className={clas.list} key={item.id}>
-                            {
-                                active ?
-                                    <div className="checkbox">
-                                        <input type="checkbox"
-                                               id={item.id}
-                                               onClick={() => checkProps(item.size.id)}
-                                               className="checked1"
-                                               disabled={!mod.includes(item.size.id)}/>
-                                        <label htmlFor={item.id}>
-                                            <span className="text">{item.size.name}</span>
-                                        </label>
-                                    </div>
-                                    :
-                                    <div className="checkbox">
-                                        <input type="checkbox"
-                                               id={item.id}
-                                               onClick={() => checkProps(item.size.id)}
-                                               className="checked1"
-                                               disabled={false}/>
-                                        <label htmlFor={item.id}>
-                                            <span className="text">{item.size.name}</span>
-                                        </label>
-                                    </div>
-                            }
-                        </div>
-                    )
+                    if(item.size){
+                        return (
+                            <div className={clas.list} key={item.id}>
+                                {
+                                    active ?
+                                        <div className="checkbox">
+                                            <input type="checkbox"
+                                                   id={item.id}
+                                                   onClick={() => checkProps(item.size.id)}
+                                                   className="checked1"
+                                                   disabled={!mod.includes(item.size.id)}/>
+                                            <label htmlFor={item.id}>
+                                                <span className="text">{item.size.name}</span>
+                                            </label>
+                                        </div>
+                                        :
+                                        <div className="checkbox">
+                                            <input type="checkbox"
+                                                   id={item.id}
+                                                   onClick={() => checkProps(item.size.id)}
+                                                   className="checked1"
+                                                   disabled={false}/>
+                                            <label htmlFor={item.id}>
+                                                <span className="text">{item.size.name}</span>
+                                            </label>
+                                        </div>
+                                }
+                            </div>
+                        )
+                    }
+                    else {
+                       return null
+                    }
+                    
                 })
             }
 
