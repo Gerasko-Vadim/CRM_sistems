@@ -10,7 +10,6 @@ const Ordering = ({ data }) => {
     const [modifiers, setModifiers] = useState([])
     const [sizeProduct, setSizeProduct] = useState([]);
     const [sizeId, setSizeId] = useState()
-    const [amount, setAmount] = useState()
 
 
     useEffect(() => {
@@ -31,13 +30,11 @@ const Ordering = ({ data }) => {
         }
     };
 
-    const addAmount = (amount) => {
-        setAmount(amount)
-    };
+ 
 
     console.log('size', sizeId)
 
-    const pushProductToBasket = () => {
+    const pushProductToBasket = (amount) => {
         const arrProduct = JSON.parse(localStorage.getItem('products')) || [];
         console.log(arrProduct)
         const product = {
@@ -84,7 +81,7 @@ const Ordering = ({ data }) => {
                 </div>
 
             </div>
-            <BlockOrdered data={data} addAmount={addAmount} pushProductToBasket={pushProductToBasket} />
+            <BlockOrdered data={data}  pushProductToBasket={pushProductToBasket} />
 
             <ModificatorGroup modifiers={modifiers} changeChecked={changeChecked} items={data.modifier_groups} />
             <SizepriceGroup items={data.sizeprice} changeChecked={(id) => setSizeId(id)} modifiers={sizeProduct} />

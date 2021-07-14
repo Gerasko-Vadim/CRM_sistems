@@ -6,14 +6,17 @@ const BlockOrdered = ({ data, addAmount, pushProductToBasket }) => {
 
   const increment = () => {
     if (number > 1){
-      addAmount(number - 1)
-      setNumber(number - 1);
+      setNumber(number - 1)
     } 
   };
   const decrement = () => {
     setNumber(number + 1);
-    addAmount(number + 1)
+
   };
+  const addProduct =()=>{
+ 
+    pushProductToBasket(number)
+  }
   console.log(data)
 
 
@@ -32,7 +35,7 @@ const BlockOrdered = ({ data, addAmount, pushProductToBasket }) => {
           <span>{number}</span>
           <button onClick={decrement}>+</button>
         </div>
-        <button className={clas.addBtn} onClick={pushProductToBasket} >Добавить</button>
+        <button className={clas.addBtn} onClick={addProduct} >Добавить</button>
       </div>
     </div>
   );

@@ -7,6 +7,12 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.basketPage2{
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 59px 1fr 140px;
+}
 .navBar {
   width: 100%;
   height: auto;
@@ -50,6 +56,9 @@
   margin-top: 10px;
   color: #898a8d;
 }
+.listItem{
+  overflow-y: scroll;
+}
 .link{
     width: 100%;
     height: 45px;
@@ -70,7 +79,66 @@
   color: #ffffff;
 }
 .item{
-  background: red;
   width: 100%;
   height: 58px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+  padding: 20px;
 }
+.deleteBlock{
+  position: relative;
+}
+.deleteIcon{
+  margin-top: auto;
+  margin-bottom: auto;
+  position: absolute;
+  bottom:20px;
+  left: 40px;
+}
+.paymentBlock{
+  width:100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 0.5px dashed #000000;
+}
+.priceBlock{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+}
+.total{
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #0A191E;
+}
+.totalPrice{
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  color: #0A191E;
+}
+.btnOrder{
+  height: 50px;
+  width: 100%;
+  background: #FC001C;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  border: none;
+}
+.btnOrder:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
