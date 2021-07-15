@@ -17,6 +17,8 @@ const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjc5NDVhZmIyODliM
       getAllCategory:()=>http.get("/api/categories"),
       getTopProduct: () => http.get(`/api/categories/top`),
       getProductsByCategory:(id)=>http.get(`/api/categories/${id}`),
-      getProductById: (id)=> http.get(`/api/products/${id}`)
+      getProductById: (id)=> http.get(`/api/products/${id}`),
+      getAllPriceProducts: (products) => http.post(`/api/orders/calculate`, products),
+      createOrdered: ( products) => http.post(`/api/orders/create`,products)
     
   }

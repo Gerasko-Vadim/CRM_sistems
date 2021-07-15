@@ -1,9 +1,10 @@
-import { GET_TOP_PROPDUCTS, MAIN_DATA } from "../actions/constants";
+import { GET_ALL_PRICE_PRODUCTS, GET_TOP_PROPDUCTS, MAIN_DATA } from "../actions/constants";
 
 
 const initialState = {
     arrayData: [],
-    products:[]
+    products:[],
+    allPrice:{}
   };
   export function MainData(state = initialState, action) {
     switch (action.type) {
@@ -17,6 +18,11 @@ const initialState = {
           ...state,
           products:[...action.payload]
         };
+      case GET_ALL_PRICE_PRODUCTS:
+        return{
+          ...state,
+          allPrice:{...action.payload}
+        }
       default:
         return state;
     }

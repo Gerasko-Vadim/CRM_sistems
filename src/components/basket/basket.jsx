@@ -13,14 +13,17 @@ import {
   TrailingActions,
 } from 'react-swipeable-list';
 import 'react-swipeable-list/dist/styles.css';
+import { useDispatch, useSelector } from "react-redux";
+import { createOrdered, getPriceAllProducts } from "../../redux/actions/mainPage";
+import { ToastContainer } from "react-toastify";
 
 
 
 const trailingActions = (id) => {
+
   const deleteProduct = () => {
     const newArr = JSON.parse(localStorage.getItem('products')).filter((item) => item.productId !== id)
     localStorage.setItem('products', JSON.stringify(newArr))
-    console.log('swipe', id)
   }
   return (
     <TrailingActions>
@@ -50,77 +53,102 @@ const trailingActions = (id) => {
 
 
 const Basket = () => {
-
+  const priceProducts = useSelector((state) => state.MainData.allPrice)
   const [products, setProducts] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setProducts(JSON.parse(localStorage.getItem('products')) || [])
-  }, [])
+    dispatch(getPriceAllProducts())
+  }, [localStorage.getItem('products')])
+
+  const setOrdered = () => {
+    dispatch(createOrdered())
+  }
 
   return (
-    <div className={products.length == 0 ? clas.basketPage : clas.basketPage2}>
-      <div className={clas.navBar}>
-        <Link to="/main">
-          <img alt="back" src={back} />
-        </Link>
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <div className={products.length == 0 ? clas.basketPage : clas.basketPage2}>
 
-        <span className={clas.title}>Корзина</span>
-        <img alt="search" src={search} />
-      </div>
-      {
-        products.length !== 0 ?
-          <div className={clas.listItem}>
-            <SwipeableList>
-              {
-                products.map((item, index) => {
-                  return (
+        <div className={clas.navBar}>
+          <Link to="/main">
+            <img alt="back" src={back} />
+          </Link>
 
-                    <SwipeableListItem
+          <span className={clas.title}>Корзина</span>
+          <img alt="search" src={search} />
+        </div>
+        {
+          priceProducts && priceProducts.items ?
+            <div className={clas.listItem}>
+              <SwipeableList>
+                {
+                  priceProducts.items.map((item, index) => {
+                    return (
 
-
-
-                      trailingActions={trailingActions(item.productId)}
-                    >
-                      <div className={clas.item}>
-                        <span> {item.name}</span>
-                        <span>{item.amount}x</span>
-                      </div>
-                    </SwipeableListItem>
-
-                  )
-                })
-              }
-            </SwipeableList>
-          </div>
-          : <div className={clas.content}>
-            <span className={clas.content_title}>В корзине пусто</span>
-            <span className={clas.content_descrip}>
-              У нас есть большой ассортимент, вы обязательно найдете что-то для
-              себя!
-            </span>
-            <Link className={clas.link} to="/main">
-              <button className={clas.button}>В меню</button>
-            </Link>
+                      <SwipeableListItem
 
 
-          </div>
-      }
 
-      {
-        products.length == 0 ?
-          <div className={clas.fluidTabs}>
-            <FluidTabs />
-          </div>
+                        trailingActions={trailingActions(item.productId)}
+                      >
+                        <div className={clas.item}>
+                          <span> {item.name}</span>
+                          <div>
+                            <span>{item.price}сом </span>
+                            <span>{item.amount}x</span>
+                          </div>
 
-          : <div className={clas.paymentBlock}>
-            <div className={clas.priceBlock}>
-              <span className={clas.total}>Итого:</span>
-              <span className={clas.totalPrice}>450 сом</span>
+                        </div>
+                      </SwipeableListItem>
+
+                    )
+                  })
+                }
+              </SwipeableList>
             </div>
-            <button className={clas.btnOrder}>Перейти к оплате </button>
-          </div>
-      }
-    </div>
+            : <div className={clas.content}>
+              <span className={clas.content_title}>В корзине пусто</span>
+              <span className={clas.content_descrip}>
+                У нас есть большой ассортимент, вы обязательно найдете что-то для
+                себя!
+              </span>
+              <Link className={clas.link} to="/main">
+                <button className={clas.button}>В меню</button>
+              </Link>
+
+
+            </div>
+        }
+
+        {
+          products.length == 0 ?
+            <div className={clas.fluidTabs}>
+              <FluidTabs />
+            </div>
+
+            : <div className={clas.paymentBlock}>
+              <div className={clas.priceBlock}>
+                <span className={clas.total}>Итого:</span>
+                <span className={clas.totalPrice}>{priceProducts && priceProducts.totalPrice} сом</span>
+              </div>
+              <button className={clas.btnOrder} onClick={() => setOrdered()}>Перейти к оплате </button>
+            </div>
+        }
+      </div>
+
+    </>
   );
 };
 export default Basket;

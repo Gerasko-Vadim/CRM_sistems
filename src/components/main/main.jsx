@@ -9,16 +9,21 @@ import Dishes from "./dishes/dishes";
 import { useDispatch, useSelector } from "react-redux";
 
 import CardsWrapper from "./cardsWrapper/cardsWrapper";
-import { getAllCategory, getTopProductsActions } from "../../redux/actions/mainPage";
-import { Link } from "react-router-dom";
+import { getAllCategory, getPriceAllProducts, getTopProductsActions } from "../../redux/actions/mainPage";
+import { Link, useLocation } from "react-router-dom";
 
 const Main = () => {
   const dispatch = useDispatch();
+  const {pathname} = useLocation()
+  const table = pathname.split('/').pop()
+  localStorage.setItem('table',table)
   const data = useSelector((state) => state.MainData.products)
+  const priceProducts = useSelector((state)=> state.MainData.allPrice)
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getAllCategory());
     dispatch(getTopProductsActions())
+    dispatch(getPriceAllProducts())
   }, []);
   return (
     <div className={clas.main}>
@@ -37,7 +42,7 @@ const Main = () => {
         <Link className={clas.link} to="/basket">
           <div className={clas.button}>
             <span className={clas.basketTitle}>Корзина</span>
-            <span className={clas.basketPrice}>1150 сом</span>
+            <span className={clas.basketPrice}>{priceProducts && priceProducts.totalPrice} сом</span>
           </div>
         </Link>
       </div>
