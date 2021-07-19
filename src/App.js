@@ -7,11 +7,13 @@ import DishesInfo from "./components/dishesInfo/dishesInfo";
 import Basket from "./components/basket/basket";
 
 function App() {
+
   return (
     <div className="App">
       <Switch>
-        <Route  exact path="/:table" component={HelloPage}/>
-        <Route path="/main" component={Main}/>
+        <Route exact  path="/table/:table" component={HelloPage}/>
+ 
+        <Route  path="/main" component={Main}/>
         <Route path="/dishes-info/:id" component={DishesInfo}/>
         <Route path="/basket" component={Basket}/>
       </Switch>
